@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:fragment="layout(content)">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/product-style.css}">
+    <link rel="stylesheet" th:href="@{/css/product-view.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/admin-index.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/viewproducts.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/view_orders.css}">
+    <link rel="stylesheet" th:href="@{/css/login-style.css}">
+    <link rel="stylesheet" th:href="@{/css/cart/cartstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/cart/checkoutstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/user/profile.css}">
+    <link rel="stylesheet" th:href="@{/css/payment/payment.css}">
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+</head>
+<body>
+    <header class="header-bar">
+        <div class="main-nav">
+            <a class="logo" th:href="@{/}">
+                <img th:src="'https://buynest-ecom-static.s3.us-east-1.amazonaws.com/nest.png'" alt="buynest" class="logo">
+            </a>
+        </div>
+
+        <form class="nav-search" action="/search" method="get">
+            <input type="text" name="q" placeholder="Search products...">
+            <button type="submit">
+                <!-- Your SVG icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="search-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+            </button>
+        </form>
+
+        <div class="side-nav">
+
+            <!-- SHOW Login & Register ONLY when user is NOT logged in -->
+            <a th:if="${#authorization.expression('isAnonymous()')}"
+               th:href="@{/login}" class="main-nav-links">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                     stroke-width="1.5" stroke="currentColor"
+                     class="size-6 nav-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                </svg>
+                Login
+            </a>
+
+            <button th:if="${#authorization.expression('isAnonymous()')}"
+                    class="main-nav-links btn-register">
+                <a th:href="@{/register}">Register</a>
+            </button>
+
+            <!-- SHOW Cart only when LOGGED IN -->
+            <a th:if="${#authorization.expression('isAuthenticated()')}"
+               th:href="@{/cart}" class="main-nav-links">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                     class="size-6 nav-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                </svg>
+                Cart
+            </a>
+
+            <!-- Profile Dropdown -->
+            <details class="profile-dropdown"
+                     th:if="${#authorization.expression('isAuthenticated()')}">
+
+                <summary class="main-nav-links profile-summary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor"
+                         class="size-6 nav-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0
+                  0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966
+                  8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15
+                  9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                    <span th:if="${user != null}" th:text="${user.fullName}">Profile</span>
+                </summary>
+
+                <div class="dropdown-menu">
+                    <a th:href="@{/user/profile}">My Profile</a>
+                    <a th:href="@{/user/userOrders}">My Orders</a>
+                    <a th:href="@{/logout}"> <ion-icon name="log-out-outline" class="logout-icon"></ion-icon> Logout</a>
+                </div>
+
+            </details>
+
+            <!-- SHOW Admin ONLY if role == ADMIN -->
+            <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}"
+               class="main-nav-links" th:href="@{/admin/}">
+                Admin
+            </a>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar">
+        <div class="nav2-links">
+
+            <!-- All Category Trigger -->
+            <label for="category-toggle" class="nav-nav-links category-trigger">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                     stroke-width="1.5" stroke="currentColor" class="size-6 nav-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                </svg>
+                All Categories
+            </label>
+
+            <a class="nav-nav-links" th:href="@{'/products/category/Clothing'}">Clothing</a>
+            <a class="nav-nav-links" th:href="@{'/products/category/Sports'}">Sports</a>
+            <a class="nav-nav-links" th:href="@{'/products/category/Electronic'}">Electronic</a>
+            <a class="nav-nav-links" th:href="@{'/products/category/Sports Food'}">Sports Food</a>
+
+        </div>
+    </nav>
+
+    <!-- Hidden Checkbox Trigger (NO JAVASCRIPT) -->
+    <input type="checkbox" id="category-toggle" hidden>
+
+    <!-- SLIDE PANEL (CATEGORIES FROM DATABASE) -->
+    <div class="category-panel">
+
+<!--        <button class="close-panel-btn" onclick="closePanel()">✕</button>-->
+
+        <label for="category-toggle" class="close-btn">✕</label>
+
+        <h2 class="sidebar-heading">Categories</h2>
+
+        <ul class="category-list">
+
+            <li>
+                <a th:href="@{/products}">All Products</a>
+            </li>
+
+            <li th:each="cat : ${categories}">
+                <a th:href="@{'/products?category=' + ${cat.categoryId}}"
+                   th:text="${cat.name}">
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div th:replace="${content}"></div>
+
+<!--*****************************    Start footer  *************************************-->
+    <footer>
+
+        <div class="grid-footer">
+
+            <div class="logo-col">
+                <a class="footer-logo">
+                    <img th:src="'https://buynest-ecom-static.s3.us-east-1.amazonaws.com/nest.png'"
+                         alt="buynest" class="logo">
+                </a>
+
+                <ul class="social-links">
+
+                    <li>
+                        <a class="footer-link">
+                            <ion-icon class="social-icon" name="logo-instagram"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="footer-link">
+                            <ion-icon class="social-icon" name="logo-facebook"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="footer-link">
+                            <ion-icon class="social-icon" name="logo-twitter"></ion-icon>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <p class="copyright">Copyright &copy; <span class="year">2027</span> by BuyNest.,
+                    All rights reserved.
+                </p>
+
+            </div>
+
+            <div class="address-col">
+                <p class="footer-heading">Contact Us</p>
+                <address class="contacts">
+                    <p class="address">
+                        623 Harrison St., 2nd Floor, San Francisco, CA 94107
+                    </p>
+                    <p>
+                        <a class="footer-link" href="tel:415-201-6370">415-201-6370</a>
+                        <br>
+                        <a class="footer-link" href="mailto:hello@buynest.com">hello@buynest.com</a>
+                    </p>
+                </address>
+            </div>
+
+            <nav class="nav-col">
+                <p class="footer-heading">Apps</p>
+                <ul class="footer-nav">
+                    <li><a class="footer-link" href="#">iOS app</a></li>
+                    <li><a class="footer-link" href="#">Android app</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-col">
+                <p class="footer-heading">Company</p>
+                <ul class="footer-nav">
+                    <li><a class="footer-link" href="#">About Buynest</a></li>
+                    <li><a class="footer-link" href="#">For Business</a></li>
+                    <li><a class="footer-link" href="#">Careers</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-col">
+                <p class="footer-heading">Resources</p>
+                <ul class="footer-nav">
+                    <li><a class="footer-link" href="#">Help center</a></li>
+                    <li><a class="footer-link" href="#">Privacy & terms</a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </footer>
+<!--*****************************    end footer  *************************************-->
+
+<!--************** icons ******************-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
