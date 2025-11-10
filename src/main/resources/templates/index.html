@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+    </head>
+<body>
+    <section class="all-content">
+
+<!--************************************ Carousel Section *************************************-->
+        <div class="carousel-container">
+            <!-- Radio buttons (hidden) -->
+            <input type="radio" name="slider" id="slide1" checked>
+            <input type="radio" name="slider" id="slide2">
+            <input type="radio" name="slider" id="slide3">
+            <input type="radio" name="slider" id="slide4">
+
+            <!-- Carousel slides -->
+            <div class="slides">
+                <div class="slide"><img th:src="@{/img/all.png}" alt="Image 1"></div>
+                <div class="slide"><img th:src="@{/img/tv.png}" alt="Image 2"></div>
+                <div class="slide"><img th:src="@{/img/grocery.png}" alt="Image 3"></div>
+                <div class="slide"><img th:src="@{/img/beauty.png}" alt="Image 4"></div>
+            </div>
+
+            <!-- Dots for navigation -->
+            <div class="nav-dots">
+                <label for="slide1" class="dot"></label>
+                <label for="slide2" class="dot"></label>
+                <label for="slide3" class="dot"></label>
+                <label for="slide4" class="dot"></label>
+            </div>
+
+            <!-- Arrows -->
+            <div class="arrow left">
+                <label for="slide4">&#10094;</label>
+                <label for="slide2">&#10094;</label>
+                <label for="slide3">&#10094;</label>
+                <label for="slide1">&#10094;</label>
+            </div>
+            <div class="arrow right">
+                <label for="slide2">&#10095;</label>
+                <label for="slide3">&#10095;</label>
+                <label for="slide4">&#10095;</label>
+                <label for="slide1">&#10095;</label>
+            </div>
+        </div>
+<!--************************************ Carousel Section *************************************-->
+
+<!--************************************ Latest Product Models *************************************-->
+
+        <div class="latest-prod-container">
+            <h2>Latest Products</h2>
+
+            <div class="product-con-container">
+
+                <div class="product-container-cards">
+                    <figure class="image-container-latest-product">
+                        <img class="product-image" th:src="@{/img/elecs/mam5.png}" alt="Macbook Air M5 images">
+                    </figure>
+                    <a class="product-links"><p>Macbook Air M5</p></a>
+                </div>
+
+                <div class="product-container-cards">
+                    <figure class="image-container-latest-product">
+                        <img class="product-image" th:src="@{/img/elecs/s25u.png}" alt="Samsung s25 ultra image">
+                    </figure>
+                    <a class="product-links"><p>Samsung s25 ultra</p></a>
+                </div>
+
+                <div class="product-container-cards">
+                    <figure class="image-container-latest-product">
+                        <img class="product-image" th:src="@{/img/elecs/xm6.png}" alt="Sony Xm6 images image">
+                    </figure>
+                    <a class="product-links"><p>Sony Xm6</p></a>
+                </div>
+
+                <div class="product-container-cards">
+                    <figure class="image-container-latest-product">
+                        <img class="product-image" th:src="@{/img/shoes/n27.png}" alt="Asics nimbus 27 image">
+                    </figure>
+                    <a class="product-links"><p>Asics Nimbus 27</p></a>
+                </div>
+
+                <div class="product-container-cards">
+                    <figure class="image-container-latest-product">
+                        <img class="product-image" th:src="@{/img/elecs/roglap.png}" alt="Asus Strix Rog Laptop image">
+                    </figure>
+                    <a class="product-links"><p>Asus Gaming Laptop</p></a>
+                </div>
+
+            </div>
+
+        </div>
+
+<!--************************************ Latest Product Models *************************************-->
+
+<!--************************************ Products Cards *************************************-->
+        <div class="product-preview-container">
+
+            <div class="product-preview-card">
+                <div class="product-container">
+                    <h3 class="category-name">Bedsheets and all</h3>
+                    <div class="product-image-container">
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/home decor/bedsheet.png}" alt="Bedsheet image">
+                            </figure>
+                            <a class="product-links"><p>Bedsheets, Cushion covers and more</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/home decor/furniture.png}" alt="furniture image">
+                            </figure>
+                            <a class="product-links"><p>Furniture, and more</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/home decor/home storage.png}" alt="home storage">
+                            </figure>
+                            <a class="product-links"><p>Home storage</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/home decor/lights.png}" alt="light images">
+                            </figure>
+                            <a class="product-links"><p>Decorative Lights and more</p></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-preview-card">
+                <div class="product-container">
+                    <h3 class="category-name">Home appliances</h3>
+                    <div class="product-image-container">
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/home_appl/ac.png}" alt="Air Conditioner image">
+                            </figure>
+                            <a class="product-links"><p>Air Conditioners</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/home_appl/fridge.png}" alt="Refrigerator image">
+                                </figure>
+                            <a class="product-links"><p>Refrigerators</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/home_appl/microwave.png}" alt="Microwave image">
+                            </figure>
+                            <a class="product-links"><p>Microwave</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/home_appl/wm.png}" alt="Washing  Machine image">
+                            </figure>
+                            <a class="product-links"><p>Washing Machine</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-preview-card">
+                <div class="product-container">
+                    <h3 class="category-name">Kids Toys</h3>
+                    <div class="product-image-container">
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/kids/bagpack.png}" alt="Bagpack image">
+                            </figure>
+                            <a class="product-links"><p>School Bagpacks</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/kids/bb.png}" alt="Building block image">
+                            </figure>
+                            <a class="product-links"><p>Building Block</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/kids/stationary.png}" alt="Stationary image">
+                            </figure>
+                            <a class="product-links"><p>Stationary</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/kids/stroller.png}" alt="Stroller images">
+                            </figure>
+                            <a class="product-links"><p>Stroller</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-preview-card">
+                <div class="product-container">
+                    <h3 class="category-name">Games</h3>
+                    <div class="product-image-container">
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/games/ps5.png}" alt="PS5 image">
+                            </figure>
+                            <a class="product-links"><p>Sony PS5</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/games/xbox.png}" alt="Xbox image">
+                            </figure>
+                            <a class="product-links"><p>Xbox</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/games/ns2.png}" alt="Nintendo Switch image">
+                            </figure>
+                            <a class="product-links"><p>Nintendo Switch 2</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/games/cds.png}" alt="Games images">
+                            </figure>
+                            <a class="product-links"><p>All Games Accessories</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-preview-card">
+                <div class="product-container">
+                    <h3 class="category-name">Accessories</h3>
+                    <div class="product-image-container">
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/accessories/sunglass.png}" alt="Sunglasses image">
+                            </figure>
+                            <a class="product-links"><p>Sunglasses</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/accessories/watch.png}" alt="Watch image">
+                            </figure>
+                            <a class="product-links"><p>Watches</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/accessories/cap.png}" alt="Cap images">
+                            </figure>
+                            <a class="product-links"><p>Cap</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/accessories/footwear.png}" alt="Footwear images">
+                            </figure>
+                            <a class="product-links"><p>FootWear</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-preview-card">
+                <div class="product-container">
+                    <h3 class="category-name">Fitness</h3>
+                    <div class="product-image-container">
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/fitness/gyme.png}" alt="Gym Equipments image">
+                            </figure>
+                            <a class="product-name"><p>Gym Equipments</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/fitness/pp.png}" alt="Protein Powder image">
+                            </figure>
+                            <a class="product-links"><p>Protein Powders</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/fitness/ss.png}" alt="Sports Shoes image">
+                            </figure>
+                            <a class="product-links"><p>Sports Shoes</p></a>
+                        </div>
+                        <div class="products">
+                            <figure class="image-container">
+                                <img class="product-image" th:src="@{/img/fitness/sw.png}" alt="Sports Wear images">
+                            </figure>
+                            <a class="product-links"><p>Sports Wear</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+<!--************************************ Products Cards *************************************-->
+
+    </section>
+</body>
+</html>
