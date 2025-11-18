@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Edit Page</title>
+</head>
+<body>
+    <section>
+        <div class="profile-page-container">
+
+            <!-- Header -->
+            <div class="product-header">
+                <h2>Edit Profile</h2>
+            </div>
+
+            <!-- Edit Form -->
+            <form th:action="@{/user/updateProfile}" th:object="${profile}" method="post">
+
+                <!-- Personal Details Card -->
+                <div class="profile-card">
+                    <h3>Personal Details</h3>
+
+                    <p>
+                        <label>Full Name:</label>
+                        <input type="text" th:field="*{fullName}" required />
+                    </p>
+
+                    <p>
+                        <label>Email:</label>
+                        <input type="email" th:field="*{email}" readonly /> <!-- optional to allow editing -->
+                    </p>
+
+                    <p>
+                        <label>Mobile:</label>
+                        <input type="text" th:field="*{mobileNumber}" required />
+                    </p>
+                </div>
+
+                <!-- Address Card -->
+                <div class="profile-card">
+                    <h3>Address</h3>
+
+                    <p>
+                        <label>Street:</label>
+                        <input type="text" th:field="*{street}" />
+                    </p>
+
+                    <p>
+                        <label>Area:</label>
+                        <input type="text" th:field="*{area}" />
+                    </p>
+
+                    <p>
+                        <label>City:</label>
+                        <input type="text" th:field="*{city}" />
+                    </p>
+
+                    <p>
+                        <label>State:</label>
+                        <input type="text" th:field="*{state}" />
+                    </p>
+
+                    <p>
+                        <label>Pin Code:</label>
+                        <input type="text" th:field="*{pinCode}" />
+                    </p>
+                </div>
+
+                <!-- Buttons -->
+                <div class="profile-actions">
+                    <button type="submit" class="btn-edit-profile">Save Changes</button>
+                    <a th:href="@{/user/profile}" class="btn-cancel-profile">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+    </section>
+</body>
+</html>

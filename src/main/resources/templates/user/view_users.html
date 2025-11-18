@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Users View Page</title>
+</head>
+<body>
+    <section>
+        <div class="product-page-container">
+
+            <!-- Dark header -->
+            <div class="product-header">
+                <h2>All Users</h2>
+            </div>
+
+            <!-- Messages -->
+            <th:block th:if="${session.successMsg}">
+                <div class="msg success-msg">
+                    <p>[[${session.successMsg}]]</p>
+                    <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                </div>
+            </th:block>
+
+            <th:block th:if="${session.errorMsg}">
+                <div class="msg error-msg">
+                    <p>[[${session.errorMsg}]]</p>
+                    <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                </div>
+            </th:block>
+
+            <!-- Users table -->
+            <table class="product-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="u : ${users}">
+                    <td th:text="${u.userId}"></td>
+                    <td th:text="${u.fullName}"></td>
+                    <td th:text="${u.email}"></td>
+                    <td th:text="${u.role == 'ROLE_ADMIN' ? 'Admin' : 'User'}"></td>
+                    <td>
+                        <a th:href="@{'/admin/viewUser/' + ${u.userId}}" class="btn-edit">View</a>
+                        <a th:href="@{'/admin/deleteUser/' + ${u.userId}}" class="btn-delete"
+                           onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>
