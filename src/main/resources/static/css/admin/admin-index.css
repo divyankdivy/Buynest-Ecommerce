@@ -1,0 +1,150 @@
+.admin-dashboard {
+    padding: 2rem;
+    font-family: "Rubik", sans-serif;
+    text-align: center;
+}
+
+.dashboard-heading {
+    font-size: 2.4rem;
+    color: #222b32;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    font-weight: 500;
+}
+
+.dashboard-grid {
+    max-width: 90rem;
+    margin: 0 auto 6rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    justify-items: center;
+    padding: 2rem 0;
+}
+
+.dashboard-card {
+    background-color: #f0f0f0;
+    border-radius: 1.2rem;
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
+    border: 0.1rem solid #dcdcdc; /* subtle light border */
+    padding: 2rem;
+    width: 100%;
+    max-width: 26rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-0.4rem);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.25);
+}
+
+.dashboard-icon {
+    width: 4rem;
+    height: 4rem;
+    color: #222b32;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-btn {
+    width: 100%;
+    padding: 1.2rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #384047;
+    color: #d8d8d8;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dashboard-btn:hover {
+    background-color: #222b32;
+    color: #f0f0f0;
+}
+
+/*Add Product Page*/
+
+.admin-add-product-container {
+    max-width: 60rem;
+    margin: 4rem auto;
+    background-color: #f0f0f0;
+    padding: 3rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 2rem 3rem -1rem rgba(0, 0, 0, 0.15);
+    font-family: "Rubik", sans-serif;
+}
+
+.admin-add-product-heading {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.admin-add-product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.admin-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-form-group label {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+    color: #222b32;
+}
+
+.admin-form-group input,
+.admin-form-group textarea,
+.admin-form-group select {
+    font-size: 1.6rem;
+    padding: 1.2rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.8rem;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.admin-form-group input:focus,
+.admin-form-group textarea:focus,
+.admin-form-group select:focus {
+    border-color: #384047;
+}
+
+.admin-btn-add {
+    background-color: #384047;
+    color: #d8d8d8;
+    border: none;
+    border-radius: 1rem;
+    padding: 1.2rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.admin-btn-add:hover {
+    background-color: #222b32;
+    color: #f0f0f0;
+}
+
+.admin-links {
+    color: #d8d8d8; /* same text color as theme buttons */
+    text-decoration: none;
+    font-size: 1.6rem;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.admin-links:hover {
+    color: #f0f0f0; /* slightly brighter on hover */
+    text-decoration: none;
+}

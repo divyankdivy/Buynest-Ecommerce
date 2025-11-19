@@ -1,0 +1,206 @@
+/******************************/
+/* View Products Page Styling */
+/******************************/
+
+.product-page-container {
+    width: 120rem; /* same as login-container */
+    margin: 10rem auto;
+    background-color: #f0f0f0;
+    border-radius: 2rem;
+    box-shadow: 0 2rem 3rem -1rem rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-bottom: 2rem;
+}
+
+/* Dark header */
+.product-header {
+    width: 100%;
+    background-color: #384047;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.product-header h2 {
+    margin: 0;
+    color: #f0f0f0;
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+/* Table styling */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.6rem;
+}
+
+.product-table th, .product-table td {
+    text-align: center;
+    padding: 1rem 1.2rem;
+}
+
+.product-table thead {
+    background-color: #e6e6e6;
+}
+
+.product-table th {
+    font-weight: 600;
+    color: #222b32;
+}
+
+.product-table td {
+    color: #333;
+    border-bottom: 0.1rem solid #ccc;
+}
+
+/* Buttons */
+.btn-edit, .btn-delete {
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.8rem;
+    font-size: 1.4rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-edit {
+    background-color: #384047;
+    color: #f0f0f0;
+}
+
+.btn-edit:hover {
+    background-color: #222b32;
+}
+
+.btn-delete {
+    background-color: #c0392b;
+    color: #f0f0f0;
+}
+
+.btn-delete:hover {
+    background-color: #a93226;
+}
+
+/* Messages */
+.msg.success-msg {
+    background-color: #d8f3dc;
+    color: #2b9348;
+    border: 0.1rem solid #95d5b2;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    margin: 1rem auto;
+    width: 90%;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.msg.error-msg {
+    background-color: #ffe0e0;
+    color: #d00000;
+    border: 0.1rem solid #ff8fa3;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    margin: 1rem auto;
+    width: 90%;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.product-image-viewproducts {
+    width: 5rem;       /* adjust as needed */
+    height: 5rem;
+    object-fit: cover;  /* ensures image covers the area nicely */
+    border-radius: 0.5rem;
+}
+
+/*********************************************/
+/****************Settings for User Edit in Admin*****************************/
+/*********************************************/
+
+/* Main Container */
+.edit-user-container {
+    max-width: 50rem;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #f0f0f0;
+    border-radius: 1rem;
+    box-shadow: 0 0.4rem 1rem rgba(0,0,0,0.1);
+    color: #333;
+}
+
+/* Title */
+.edit-user-title {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Field text */
+.edit-user-field {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    color: #555;
+}
+
+/* Form */
+.edit-user-form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* Label */
+.edit-user-label {
+    font-size: 1.6rem;
+    color: #333;
+}
+
+/* Select dropdown */
+.edit-user-select {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.6rem;
+    background-color: #e8e8e8;
+    color: #333;
+    outline: none;
+}
+
+.edit-user-select:focus {
+    border-color: #999;
+}
+
+/* Button */
+.edit-user-btn {
+    padding: 1rem 1.5rem;
+    font-size: 1.6rem;
+    background-color: #384047;
+    color: #f0f0f0;
+    border: none;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.edit-user-btn:hover {
+    background-color: #222b32;
+}
+
+/* Back link */
+.edit-user-back {
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 1.6rem;
+    color: #555;
+    text-decoration: none;
+}
+
+.edit-user-back:hover {
+    text-decoration: underline;
+}
