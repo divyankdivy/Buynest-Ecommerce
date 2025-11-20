@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result Page</title>
+</head>
+<body>
+    <section>
+        <div class="container">
+
+            <!-- Right Side: Product Grid -->
+            <div class="products-container">
+                <h2 class="products-heading">
+                    Results for: <span th:text="${query}"></span>
+                </h2>
+
+                <div class="product-grid">
+
+                    <!-- If no products found -->
+                    <div th:if="${#lists.isEmpty(results)}">
+                        <p>No products found for "<span th:text="${query}"></span>".</p>
+                    </div>
+
+                    <!-- Show products same as products.html -->
+                    <div class="product-card" th:each="p : ${results}">
+                        <img th:src="@{'/img/product_img/' + ${p.imageName}}"
+                             alt="Product Image"
+                             class="product-img">
+
+                        <h3 class="product-title" th:text="${p.title}"></h3>
+
+                        <button class="btn-view">
+                            <a th:href="@{'/product-view/' + ${p.productId}}">
+                                View Details
+                            </a>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</body>
+</html>
