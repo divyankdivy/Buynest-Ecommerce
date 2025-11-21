@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart Page</title>
+</head>
+<body>
+<section>
+    <div class="product-page-container">
+
+        <!-- Page Header -->
+        <div class="product-header">
+            <h2>Your Cart</h2>
+        </div>
+
+        <!-- Cart Items List -->
+        <div class="cart-items-wrapper">
+
+            <div class="cart-item-card" th:each="item : ${cart.cartItems}">
+
+                <!-- LEFT: Product Image -->
+                <div class="cart-item-image-box">
+                    <img th:src="@{'/img/product_img/' + ${item.product.imageName}}"
+                         alt="Product Image" class="cart-item-image">
+                </div>
+
+                <!-- CENTER: Info + Qty + Stock + Remove -->
+                <div class="cart-item-info">
+
+                    <h3 class="cart-item-title" th:text="${item.product.title}"></h3>
+
+                    <!-- Quantity Row -->
+                    <div class="cart-qty-row">
+
+                        <form th:action="@{'/cart/decrease/' + ${item.product.productId}}" method="post">
+                            <button type="submit" class="qty-btn">-</button>
+                        </form>
+
+                        <span class="qty-number" th:text="${item.quantity}"></span>
+
+                        <!-- Increase -->
+                        <form th:action="@{'/cart/increase/' + ${item.product.productId}}" method="post">
+                            <button type="submit" class="qty-btn">+</button>
+                        </form>
+
+                        <!-- Remove Button -->
+                        <form th:action="@{'/cart/remove/' + ${item.cartItemId}}" method="post">
+                            <button type="submit" class="cart-remove-btn-icon">
+                                <ion-icon class="remove-cart-icon" name="trash-outline"></ion-icon>
+                            </button>
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT: Price -->
+                <div class="cart-item-price-box">
+                    <p class="cart-item-price">₹<span th:text="${item.product.price}"></span></p>
+                </div>
+
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-summary-box">
+
+                <div class="container-for-alignment">
+
+                    <div class="cart-summary-row">
+                        <span class="cart-summary-label">Items in Cart:</span>
+                        <span class="cart-summary-value" th:text="${cart.totalQuantity} + ' items'"></span>
+                    </div>
+
+                    <div class="cart-summary-row">
+                        <span class="cart-summary-label">Subtotal:</span>
+                        <span class="cart-summary-value">₹<span th:text="${cart.totalPrice}"></span></span>
+                    </div>
+                </div>
+
+                <div class="checkout-btn-container">
+                    <a th:href="@{/cart/checkout}" class="checkout-btn">Proceed to Checkout</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+</body>
+</html>

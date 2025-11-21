@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout Page</title>
+</head>
+<body>
+    <section>
+
+        <div class="checkout-wrapper">
+
+            <!-- Page Header -->
+            <div class="checkout-header">
+                <div class="checkout-header-title">Checkout</div>
+            </div>
+
+            <form th:action="@{/cart/place-order}" method="post" class="checkout-wrapper-form">
+
+                <!-- Shipping Details -->
+                <div class="checkout-section">
+                    <div class="checkout-section-title">Delivering to </div>
+                    <div class="checkout-address-inline">
+                        <span th:text="${user.fullName}"></span>,
+                        <span th:text="${user.street}"></span>,
+                        <span th:text="${user.city}"></span>,
+                        <span th:text="${user.state}"></span> -
+                        <span th:text="${user.pinCode}"></span>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="checkout-section">
+                    <div class="checkout-section-title">Order Summary</div>
+
+                    <table class="checkout-table">
+                        <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item : ${cart.cartItems}">
+                            <td th:text="${item.product.title}"></td>
+                            <td th:text="${item.quantity}"></td>
+                            <td>₹<span th:text="${item.product.price * item.quantity}"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Subtotal</strong></td>
+                            <td>₹<span th:text="${cart.totalPrice}"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Delivery Charges</strong></td>
+                            <td>₹0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Grand Total</strong></td>
+                            <td>₹<span th:text="${cart.totalPrice}"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Payment Method Card -->
+                <div class="checkout-payment-card">
+                    <div class="payment-card-title">Payment Method</div>
+
+                    <!-- Divider line below heading -->
+                    <div class="payment-divider"></div>
+
+                    <!-- Payment Options Box -->
+                    <div class="checkout-payment-box">
+                        <label>
+                            <input type="radio" name="paymentMethod" value="COD" checked> Cash on Delivery
+                        </label><br>
+                        <label>
+                            <input type="radio" name="paymentMethod" value="Online"> Online Payment
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Place Order Button aligned right -->
+                <div class="checkout-btn-right">
+                    <button type="submit" class="checkout-btn">Place Order</button>
+                </div>
+
+            </form>
+        </div>
+
+<!--        <div class="checkout-container">-->
+
+<!--            <h2>Checkout</h2>-->
+
+<!--            <div class="checkout-section">-->
+<!--                <h3>Shipping Address</h3>-->
+<!--                <p th:text="${user.fullName}"></p>-->
+<!--                <p th:text="${user.street} + ', ' + ${user.city}"></p>-->
+<!--                <p th:text="${user.state} + ' - ' + ${user.pinCode}"></p>-->
+<!--            </div>-->
+
+<!--            <div class="checkout-section">-->
+<!--                <h3>Order Summary</h3>-->
+<!--                <span class="cart-summary-value" th:text="${cart.totalQuantity} + ' items'"></span>-->
+<!--                <p>Total Price: ₹<span th:text="${cart.totalPrice}"></span></p>-->
+<!--            </div>-->
+
+<!--            <form th:action="@{/place-order}" method="post">-->
+<!--                <button type="submit" class="checkout-place-order-btn">Place Order</button>-->
+<!--            </form>-->
+<!--        </div>-->
+    </section>
+</body>
+</html>

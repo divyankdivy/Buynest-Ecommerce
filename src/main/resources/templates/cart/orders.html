@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>My Orders</title>
+</head>
+<body>
+    <section>
+        <div class="product-page-container">
+
+            <!-- Dark header -->
+            <div class="product-header">
+                <h2>My Orders</h2>
+            </div>
+
+            <!-- Orders Table -->
+            <table class="product-table">
+                <thead>
+                <tr>
+                    <th>Products</th>
+                    <th>Date</th>
+                    <th>Total (₹)</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="o : ${orders}">
+                    <td>
+                    <span th:each="item, stat : ${o.orderItems}">
+                        <span th:text="${item.product.title}"></span>
+                        <span th:if="${!stat.last}">, </span>
+                    </span>
+                    </td>
+                    <td th:text="${#temporals.format(o.orderDate, 'dd-MM-yyyy HH:mm')}"></td>
+                    <td th:text="${o.totalAmount}"></td>
+                    <td th:text="${o.paymentMethod}"></td>
+                    <td th:text="${o.status}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+</body>
+</html>
